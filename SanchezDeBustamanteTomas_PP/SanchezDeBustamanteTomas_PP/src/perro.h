@@ -10,13 +10,26 @@
 
 #include <stdio_ext.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define PERROS_LEN 3
+#define NOMBRE_PERRO 21
+#define VACIO 1
+#define OCUPADO 0
+
+
 
 typedef struct{
 	int id;
-	char nombre[21];
-	char raza[21];
+	char nombre[NOMBRE_PERRO];
+	char raza[NOMBRE_PERRO];
 	int edad;
 
+	int isEmpty;
 }Perro;
+
+void mostrarPerro(Perro perro);
+int mostrarPerros(Perro* perros, int len);
+int compararPerroNombre(Perro* perros, int len,char* nombrePerro);
 
 #endif /* PERRO_H_ */
