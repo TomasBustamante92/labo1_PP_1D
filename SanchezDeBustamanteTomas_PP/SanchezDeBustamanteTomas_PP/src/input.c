@@ -288,6 +288,21 @@ int confirmacion(char* mensaje, char* error)
 	return retorno;
 }
 
+void limpiarPantalla(void)
+{
+	printf("\n\n\n\n ------------------------------------------ \n\n\n\n");
+}
+
+
+void convertirStringMinuscula(char* string)
+{
+	int i;
+
+	for(i=0 ; i<strlen(string) ; i++)
+	{
+		string[i] = tolower(string[i]);
+	}
+}
 
 
 

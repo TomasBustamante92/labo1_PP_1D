@@ -11,6 +11,8 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
+#include "input.h"
+
 
 #define PERROS_LEN 3
 #define NOMBRE_PERRO 21

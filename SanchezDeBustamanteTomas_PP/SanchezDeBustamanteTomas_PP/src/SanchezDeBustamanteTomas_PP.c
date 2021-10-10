@@ -20,7 +20,7 @@ int main(void) {
 	setbuf(stdout,NULL);
 
 	int opcion;
-	int idEstadia = 100000;
+	int idEstadia = 100002; // MODIFICAAAAR
 	Perro perros[PERROS_LEN] = { 	{7000, "Lobo", "Sharpei", 2, OCUPADO},
 									{7001, "Sheila", "Golden", 12, OCUPADO},
 									{7002, "Reina", "Galgo", 13, OCUPADO},
@@ -28,11 +28,22 @@ int main(void) {
 
 	EstadiaDiaria estadias[100];
 
-	inicializarIsEmpty(estadias, 100);
+	inicializarEstadiaIsEmpty(estadias, 100);
 
+	// HARDCODEO
+	EstadiaDiaria estadiaHardcodeo[100] = {
+			{100000, "jorge", 1152468579, 7000, {2,12,2019}, OCUPADO},
+			{100001, "agos", 1152459879, 7001, {22,2,2021}, OCUPADO},
+			{100002, "jeo", 1152465559, 7001, {22,2,2021}, OCUPADO}
+	};
+
+	estadias[0] = estadiaHardcodeo[0];
+	estadias[1] = estadiaHardcodeo[1];
+	estadias[2] = estadiaHardcodeo[2];
+	// FIN HARDCODEO
 
 	do{
-		if(input_getNumero(&opcion, "1. Reservar estadia \n"
+		if(input_getNumero(&opcion, "\n1. Reservar estadia \n"
 									"2. Modificar estadia \n"
 									"3. Cancelar estadia \n"
 									"4. Listar estadias \n"
@@ -40,7 +51,7 @@ int main(void) {
 									"6. Promedio de edad de los perros \n"
 									"7. Salir\n"
 									"Ingrese una opcion: ",
-									"1. Reservar estadia \n"
+									"\n1. Reservar estadia \n"
 									"2. Modificar estadia \n"
 									"3. Cancelar estadia \n"
 									"4. Listar estadias \n"
@@ -49,28 +60,63 @@ int main(void) {
 									"7. Salir\n"
 									"ERROR. Ingrese una opcion: ", 1, 7) == -1)
 		{
-			printf("ERROR FATAL!");
+			limpiarPantalla();
+			printf("ERROR FATAL! \n\n");
 		}
 
 		switch(opcion)
 		{
 			case 1:
-				if(confirmarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) ==0)
+				if(confirmarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
 				{
+					limpiarPantalla();
+					printf("Reserva exitosa \n\n");
 					idEstadia++;
 				}
 				break;
 			case 2:
+				if(modificarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
+				{
+					limpiarPantalla();
+					printf("Reserva modificada \n\n");
+				}
+				else
+				{
+					limpiarPantalla();
+					printf("No hay reservas en la base de datos \n\n");
+				}
 				break;
 			case 3:
+				if(cancelarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
+				{
+					limpiarPantalla();
+					printf("Reserva cancelada \n\n");
+				}
+				else
+				{
+					limpiarPantalla();
+					printf("No hay reservas en la base de datos \n\n");
+				}
 				break;
 			case 4:
+				ordenarEstadia(estadias, ESTADIA_LEN);
+
+				if(imprimirEstadias(estadias, ESTADIA_LEN, perros, PERROS_LEN) == -1)
+				{
+					printf("No hay reservas en la base de datos \n\n");
+				}
 				break;
 			case 5:
+				if(mostrarPerros(perros, PERROS_LEN) == -1)
+				{
+					limpiarPantalla();
+					printf("No hay perros en la base de datos \n\n");
+				}
 				break;
 			case 6:
 				break;
 			case 7:
+				limpiarPantalla();
 				printf("Adios!\n");
 				break;
 		}

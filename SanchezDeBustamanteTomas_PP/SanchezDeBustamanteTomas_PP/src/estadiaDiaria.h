@@ -34,10 +34,11 @@ typedef struct{
 
 }EstadiaDiaria;
 
-void inicializarIsEmpty(EstadiaDiaria* lista, int len);
+void inicializarEstadiaIsEmpty(EstadiaDiaria* lista, int len);
 sFecha pedirFecha(void);
-int checkUnPerroPorDia(EstadiaDiaria* lista, int estadiaLen, sFecha fecha);
-int encontrarLugar(EstadiaDiaria* lista, int estadiaLen);
+int encontrarLugarEstadia(EstadiaDiaria* lista, int estadiaLen);
+int indiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id);
+void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen);
 
 
 

@@ -11,8 +11,12 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int confirmacion(char* mensaje, char* error);
+void limpiarPantalla(void);
+void convertirStringMinuscula(char* string);
+
 
 /// @fn int input_getNumero(int*, char*, char*, int, int)
 /// @brief imprime mensaje pidiendo un numero entero al usuario, en caso de que se respete el minimo y el maximo, se devolvera un numero int,

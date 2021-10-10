@@ -8,7 +8,7 @@
 
 #include "estadiaDiaria.h"
 
-void inicializarIsEmpty(EstadiaDiaria* lista, int len)
+void inicializarEstadiaIsEmpty(EstadiaDiaria* lista, int len)
 {
 	int i;
 
@@ -42,24 +42,8 @@ sFecha pedirFecha(void)
 	return fecha;
 }
 
-int checkUnPerroPorDia(EstadiaDiaria* lista, int estadiaLen, sFecha fecha)
-{
-	int retorno = 0;
-	int i;
 
-	for(i=0 ; i<estadiaLen ; i++)
-	{
-		if(lista[i].fecha.dia == fecha.dia && lista[i].fecha.mes == fecha.mes && lista[i].fecha.anio == fecha.anio)
-		{
-			retorno = -1;
-			break;
-		}
-	}
-
-	return retorno;
-}
-
-int encontrarLugar(EstadiaDiaria* lista, int estadiaLen)
+int encontrarLugarEstadia(EstadiaDiaria* lista, int estadiaLen)
 {
 	int retorno = -1;
 	int i;
@@ -69,12 +53,88 @@ int encontrarLugar(EstadiaDiaria* lista, int estadiaLen)
 		if(lista[i].isEmpty == VACIO)
 		{
 			retorno = i;
+			break;
 		}
 	}
 
 
 	return retorno;
 }
+
+
+int indiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id)
+{
+	int retorno = -1;
+	int i;
+
+	for(i=0 ; i<estadiaLen ; i++)
+	{
+		if(lista[i].id == id)
+		{
+			retorno = i;
+		}
+	}
+
+	return retorno;
+
+}
+
+void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen)
+{
+	int i;
+	int flagSwap;
+	int nuevaEstadiaLen = estadiaLen -1;
+	EstadiaDiaria estadiaAux;
+
+	do{
+		flagSwap = -1;
+
+		for(i=0 ; i<nuevaEstadiaLen ; i++)
+		{
+			if(lista[i].fecha.anio < lista[i+1].fecha.anio)
+			{
+				estadiaAux = lista[i];
+				lista[i] = lista[i+1];
+				lista[i+1] = estadiaAux;
+
+				flagSwap = 0;
+			}
+			else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes < lista[i+1].fecha.mes)
+			{
+				estadiaAux = lista[i];
+				lista[i] = lista[i+1];
+				lista[i+1] = estadiaAux;
+
+				flagSwap = 0;
+			}
+			else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia < lista[i+1].fecha.dia)
+			{
+				estadiaAux = lista[i];
+				lista[i] = lista[i+1];
+				lista[i+1] = estadiaAux;
+
+				flagSwap = 0;
+			}
+			else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia == lista[i+1].fecha.dia)
+			{
+				if(strcmp(lista[i].nombreDuenio, lista[i+1].nombreDuenio) < 0)
+				{
+					estadiaAux = lista[i];
+					lista[i] = lista[i+1];
+					lista[i+1] = estadiaAux;
+
+					flagSwap = 0;
+				}
+			}
+		}
+		nuevaEstadiaLen--;
+
+	} while(flagSwap == -1);
+}
+
+
+
+
 
 
 

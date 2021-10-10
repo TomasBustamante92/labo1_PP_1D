@@ -18,6 +18,7 @@ int mostrarPerros(Perro* perros, int len)
 	int retorno = -1;
 	int i;
 
+	limpiarPantalla();
 	printf("%-15s %-15s %-15s \n\n","Nombre", "Raza", "Edad");
 	for(i=0 ; i<len ; i++)
 	{
@@ -28,6 +29,8 @@ int mostrarPerros(Perro* perros, int len)
 		}
 	}
 
+	printf("\n");
+
 	return retorno;
 }
 
@@ -35,12 +38,20 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro)
 {
 	int retorno = -1;
 	int i;
+	char perro1[strlen(nombrePerro)];
+	char perro2[len];
+
+	strcpy(perro1,nombrePerro);
+	convertirStringMinuscula(perro1);
 
 	for(i=0 ; i<len ; i++)
 	{
-		if(strcmp(nombrePerro, perros[i].nombre) == 0)
+		strcpy(perro2,perros[i].nombre);
+		convertirStringMinuscula(perro2);
+
+		if(strcmp(perro1, perro2) == 0)
 		{
-			retorno = i;
+			retorno = perros[i].id;
 		}
 	}
 
