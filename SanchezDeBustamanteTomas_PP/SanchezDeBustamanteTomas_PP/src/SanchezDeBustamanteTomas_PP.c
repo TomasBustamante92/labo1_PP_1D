@@ -20,7 +20,9 @@ int main(void) {
 	setbuf(stdout,NULL);
 
 	int opcion;
-	int idEstadia = 100002; // MODIFICAAAAR
+	int idEstadia = 100000;
+	int promedioDeEdadPerritos;
+
 	Perro perros[PERROS_LEN] = { 	{7000, "Lobo", "Sharpei", 2, OCUPADO},
 									{7001, "Sheila", "Golden", 12, OCUPADO},
 									{7002, "Reina", "Galgo", 13, OCUPADO},
@@ -29,18 +31,6 @@ int main(void) {
 	EstadiaDiaria estadias[100];
 
 	inicializarEstadiaIsEmpty(estadias, 100);
-
-	// HARDCODEO
-	EstadiaDiaria estadiaHardcodeo[100] = {
-			{100000, "jorge", 1152468579, 7000, {2,12,2019}, OCUPADO},
-			{100001, "agos", 1152459879, 7001, {22,2,2021}, OCUPADO},
-			{100002, "jeo", 1152465559, 7001, {22,2,2021}, OCUPADO}
-	};
-
-	estadias[0] = estadiaHardcodeo[0];
-	estadias[1] = estadiaHardcodeo[1];
-	estadias[2] = estadiaHardcodeo[2];
-	// FIN HARDCODEO
 
 	do{
 		if(input_getNumero(&opcion, "\n1. Reservar estadia \n"
@@ -114,6 +104,17 @@ int main(void) {
 				}
 				break;
 			case 6:
+				promedioDeEdadPerritos = promedioDeEdadDePerros(perros, PERROS_LEN);
+
+				if(promedioDeEdadPerritos != -1)
+				{
+					printf("\nPromedio de edad de perros: %d \n", promedioDeEdadPerritos);
+				}
+				else
+				{
+					printf("No hay perros en la base de datos \n");
+				}
+
 				break;
 			case 7:
 				limpiarPantalla();

@@ -59,11 +59,29 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro)
 }
 
 
+int promedioDeEdadDePerros(Perro* perros,int perrosLen)
+{
+	int promedio = -1;
+	int i;
+	int contador = 0;
+	int acumuladorEdades = 0;
 
+	for(i=0 ; i<perrosLen ; i++)
+	{
+		if(perros[i].isEmpty == OCUPADO)
+		{
+			acumuladorEdades += perros[i].edad;
+			contador++;
+		}
+	}
 
+	if(contador > 0)
+	{
+		promedio = acumuladorEdades / contador;
+	}
 
-
-
+	return promedio;
+}
 
 
 

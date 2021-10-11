@@ -13,8 +13,23 @@
 #include <string.h>
 #include <ctype.h>
 
+/// @fn int confirmacion(char*, char*)
+/// @brief se le pide al usuario que confirme alguna accion, si escribe "si" se devuelve [0]
+///
+/// @param mensaje mensaje para el usuario
+/// @param error mensaje de error para el usuario
+/// @return si el usuario confirma devuelve [0] caso contrario [-1]
 int confirmacion(char* mensaje, char* error);
+
+/// @fn void limpiarPantalla(void)
+/// @brief imprime espacios y una barra para hacer el menu mas prolijo
+///
 void limpiarPantalla(void);
+
+/// @fn void convertirStringMinuscula(char*)
+/// @brief cambia todas las letras de un string a minuscula
+///
+/// @param string palabra a modificar
 void convertirStringMinuscula(char* string);
 
 

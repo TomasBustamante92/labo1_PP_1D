@@ -30,8 +30,35 @@ typedef struct{
 	int isEmpty;
 }Perro;
 
+/// @fn void mostrarPerro(Perro)
+/// @brief imprime datos de un perro
+///
+/// @param perro estructura de un perro
 void mostrarPerro(Perro perro);
+
+/// @fn int mostrarPerros(Perro*, int)
+/// @brief muestra todos los perros en la base de datos
+///
+/// @param perros array de perros
+/// @param len longitud del array de perros
+/// @return devuelve [0] en caso de poder mostrar los perros, caso que no haya ninguno devuelve [-1]
 int mostrarPerros(Perro* perros, int len);
+
+/// @fn int compararPerroNombre(Perro*, int, char*)
+/// @brief dado un nombre lo compara en la lista de perros para verificar que este
+///
+/// @param perros array de perros
+/// @param len longitud del array de perros
+/// @param nombrePerro nombre para buscar en el array de perros
+/// @return devuelve el ID del perro encontrar, caso de que no se encontrara uno devuelve [-1]
 int compararPerroNombre(Perro* perros, int len,char* nombrePerro);
+
+/// @fn int promedioDeEdadDePerros(Perro*, int)
+/// @brief devuelve el promedio de edad de los perros
+///
+/// @param perros array de perros
+/// @param perrosLen longitud del array de perros
+/// @return devuelve el promedio de los perros, caso de que no haya ninguno devuelve [-1]
+int promedioDeEdadDePerros(Perro* perros,int perrosLen);
 
 #endif /* PERRO_H_ */

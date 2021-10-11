@@ -43,6 +43,7 @@ int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, 
 
 			if(estadiaAux.idPerro == -1)
 			{
+				limpiarPantalla();
 				printf("Perro no encontrado, ingrese otro \n\n");
 			}
 
@@ -156,7 +157,7 @@ int cancelarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* p
 	{
 		if(	input_getNumero(&id, "Ingrese ID del dia a cancelar: ", "ERROR. Ingrese ID del dia a cancelar: ", 100000, ultimoId) == 0)
 		{
-			indiceEstadia = indiceEstadiaPorId(lista, estadiaLen, id);
+			indiceEstadia = encontrarIndiceEstadiaPorId(lista, estadiaLen, id);
 
 			if(indiceEstadia != -1)
 			{
@@ -198,7 +199,7 @@ int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* 
 	{
 		if(input_getNumero(&id, "\nIngrese ID del dia a modificar: ", "ERROR. Ingrese ID del dia a modificar: ", 100000, ultimoId) == 0)
 		{
-			indiceEstadia = indiceEstadiaPorId(lista, estadiaLen, id);
+			indiceEstadia = encontrarIndiceEstadiaPorId(lista, estadiaLen, id);
 
 			if(indiceEstadia != -1)
 			{
@@ -274,7 +275,7 @@ int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* 
 					}
 					else
 					{
-						printf("ERROR FATAL");
+						printf("ERROR FATAL \n");
 					}
 				} while(opciones != 3);
 			}
@@ -287,7 +288,6 @@ int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* 
 	}
 	return retorno;
 }
-
 
 
 

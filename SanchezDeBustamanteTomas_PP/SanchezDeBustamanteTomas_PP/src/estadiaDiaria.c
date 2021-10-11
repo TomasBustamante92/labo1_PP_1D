@@ -62,7 +62,7 @@ int encontrarLugarEstadia(EstadiaDiaria* lista, int estadiaLen)
 }
 
 
-int indiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id)
+int encontrarIndiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id)
 {
 	int retorno = -1;
 	int i;
@@ -117,7 +117,7 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen)
 			}
 			else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia == lista[i+1].fecha.dia)
 			{
-				if(strcmp(lista[i].nombreDuenio, lista[i+1].nombreDuenio) < 0)
+				if(strcmp(lista[i].nombreDuenio, lista[i+1].nombreDuenio) > 0)
 				{
 					estadiaAux = lista[i];
 					lista[i] = lista[i+1];
