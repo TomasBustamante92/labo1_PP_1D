@@ -72,6 +72,7 @@ int encontrarIndiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id)
 		if(lista[i].id == id)
 		{
 			retorno = i;
+			break;
 		}
 	}
 
