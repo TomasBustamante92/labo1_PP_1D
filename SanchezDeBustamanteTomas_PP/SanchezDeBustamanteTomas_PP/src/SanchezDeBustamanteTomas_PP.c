@@ -21,7 +21,7 @@ int main(void) {
 
 	int opcion;
 	int idEstadia = 100000;
-	int promedioDeEdadPerritos;
+	float promedioDeEdadPerritos;
 
 	Perro perros[PERROS_LEN] = { 	{7000, "Lobo", "Sharpei", 2, OCUPADO},
 									{7001, "Sheila", "Golden", 12, OCUPADO},
@@ -109,7 +109,7 @@ int main(void) {
 				if(promedioDeEdadPerritos != -1)
 				{
 					limpiarPantalla();
-					printf("\nPromedio de edad de perros: %d \n", promedioDeEdadPerritos);
+					printf("\nPromedio de edad de perros: %.2f \n", promedioDeEdadPerritos);
 				}
 				else
 				{

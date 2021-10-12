@@ -60,9 +60,9 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro)
 }
 
 
-int promedioDeEdadDePerros(Perro* perros,int perrosLen)
+float promedioDeEdadDePerros(Perro* perros,int perrosLen)
 {
-	int promedio = -1;
+	float promedio = -1;
 	int i;
 	int contador = 0;
 	int acumuladorEdades = 0;
@@ -78,7 +78,7 @@ int promedioDeEdadDePerros(Perro* perros,int perrosLen)
 
 	if(contador > 0)
 	{
-		promedio = acumuladorEdades / contador;
+		promedio = (float)acumuladorEdades / contador;
 	}
 
 	return promedio;

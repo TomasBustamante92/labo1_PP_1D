@@ -53,12 +53,12 @@ int mostrarPerros(Perro* perros, int len);
 /// @return devuelve el ID del perro encontrar, caso de que no se encontrara uno devuelve [-1]
 int compararPerroNombre(Perro* perros, int len,char* nombrePerro);
 
-/// @fn int promedioDeEdadDePerros(Perro*, int)
+/// @fn float promedioDeEdadDePerros(Perro*, int)
 /// @brief devuelve el promedio de edad de los perros
 ///
 /// @param perros array de perros
 /// @param perrosLen longitud del array de perros
 /// @return devuelve el promedio de los perros, caso de que no haya ninguno devuelve [-1]
-int promedioDeEdadDePerros(Perro* perros,int perrosLen);
+float promedioDeEdadDePerros(Perro* perros,int perrosLen);
 
 #endif /* PERRO_H_ */
