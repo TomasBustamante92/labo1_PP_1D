@@ -20,16 +20,20 @@ int mostrarPerros(Perro* perros, int len)
 
 	limpiarPantalla();
 	printf("%-15s %-15s %-15s \n\n","Nombre", "Raza", "Edad");
-	for(i=0 ; i<len ; i++)
-	{
-		if(perros[i].isEmpty == OCUPADO)
-		{
-			mostrarPerro(perros[i]);
-			retorno = 0;
-		}
-	}
 
-	printf("\n");
+	if(perros != NULL && len > 0)
+	{
+		for(i=0 ; i<len ; i++)
+		{
+			if(perros[i].isEmpty == OCUPADO)
+			{
+				mostrarPerro(perros[i]);
+				retorno = 0;
+			}
+		}
+
+		printf("\n");
+	}
 
 	return retorno;
 }
@@ -44,15 +48,18 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro)
 	strcpy(perro1,nombrePerro);
 	convertirStringMinuscula(perro1);
 
-	for(i=0 ; i<len ; i++)
+	if(perros != NULL && len > 0)
 	{
-		strcpy(perro2,perros[i].nombre);
-		convertirStringMinuscula(perro2);
-
-		if(strcmp(perro1, perro2) == 0)
+		for(i=0 ; i<len ; i++)
 		{
-			retorno = perros[i].id;
-			break;
+			strcpy(perro2,perros[i].nombre);
+			convertirStringMinuscula(perro2);
+
+			if(strcmp(perro1, perro2) == 0)
+			{
+				retorno = perros[i].id;
+				break;
+			}
 		}
 	}
 
@@ -67,18 +74,21 @@ float promedioDeEdadDePerros(Perro* perros,int perrosLen)
 	int contador = 0;
 	int acumuladorEdades = 0;
 
-	for(i=0 ; i<perrosLen ; i++)
+	if(perros != NULL && perrosLen > 0)
 	{
-		if(perros[i].isEmpty == OCUPADO)
+		for(i=0 ; i<perrosLen ; i++)
 		{
-			acumuladorEdades += perros[i].edad;
-			contador++;
+			if(perros[i].isEmpty == OCUPADO)
+			{
+				acumuladorEdades += perros[i].edad;
+				contador++;
+			}
 		}
-	}
 
-	if(contador > 0)
-	{
-		promedio = (float)acumuladorEdades / contador;
+		if(contador > 0)
+		{
+			promedio = (float)acumuladorEdades / contador;
+		}
 	}
 
 	return promedio;

@@ -79,23 +79,27 @@ int imprimirEstadias(EstadiaDiaria* lista, int estadiaLen, Perro* perros,int per
 
 	limpiarPantalla();
 	imprimirEstadiaMenu();
-	for(i=0 ; i<estadiaLen ; i++)
+
+	if(lista != NULL && estadiaLen > 0)
 	{
-		if(lista[i].isEmpty == OCUPADO)
+		for(i=0 ; i<estadiaLen ; i++)
 		{
-			indicePerros = encontrarPerroId(perros, perrosLen, lista[i].idPerro);
-
-			if(indicePerros != -1)
+			if(lista[i].isEmpty == OCUPADO)
 			{
-				imprimirEstadia(lista[i], perros, indicePerros);
-			}
-			else
-			{
-				printf("No se encontro ningun perro \n");
-			}
-			retorno = 0;
+				indicePerros = encontrarPerroId(perros, perrosLen, lista[i].idPerro);
 
-			break;
+				if(indicePerros != -1)
+				{
+					imprimirEstadia(lista[i], perros, indicePerros);
+				}
+				else
+				{
+					printf("No se encontro ningun perro \n");
+				}
+				retorno = 0;
+
+				break;
+			}
 		}
 	}
 	return retorno;
@@ -139,12 +143,15 @@ int encontrarPerroId(Perro* perros, int perrosLen, int reservaId)
 	int retorno = -1;
 	int i;
 
-	for(i=0 ; i<perrosLen ; i++)
+	if(perros != NULL && perrosLen > 0)
 	{
-		if(perros[i].id == reservaId)
+		for(i=0 ; i<perrosLen ; i++)
 		{
-			retorno = i;
-			break;
+			if(perros[i].id == reservaId)
+			{
+				retorno = i;
+				break;
+			}
 		}
 	}
 

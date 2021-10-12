@@ -33,18 +33,21 @@ static int esNumerica(char* cadena)
     int retorno = 1;
     int i = 0;
 
-    if((cadena[0] == '-' || cadena[0] == '+') && cadena[1] != '\0')
+    if(cadena != NULL)
     {
-        i=1;
-    }
+		if((cadena[0] == '-' || cadena[0] == '+') && cadena[1] != '\0')
+		{
+			i=1;
+		}
 
-    for( ; cadena[i] != '\0' ; i++)
-    {
-        if(cadena[i] < '0' || cadena[i] > '9')
-        {
-            retorno = 0;
-            break;
-        }
+		for( ; cadena[i] != '\0' ; i++)
+		{
+			if(cadena[i] < '0' || cadena[i] > '9')
+			{
+				retorno = 0;
+				break;
+			}
+		}
     }
 
     return retorno;
@@ -81,31 +84,34 @@ static int esFloat(char* cadena)
     int i = 0;
     int contadorPuntos = 0;
 
-    if((cadena[0] == '-' || cadena[0] == '+') && cadena[1] != '\0')
+    if(cadena != NULL)
     {
-        i=1;
-    }
+		if((cadena[0] == '-' || cadena[0] == '+') && cadena[1] != '\0')
+		{
+			i=1;
+		}
 
-    for( ; cadena[i] != '\0' ; i++)
-    {
-        if(cadena[i] < '0' || cadena[i] > '9')
-        {
-        	if(cadena[i] == '.')
-        	{
-				contadorPuntos++;
+		for( ; cadena[i] != '\0' ; i++)
+		{
+			if(cadena[i] < '0' || cadena[i] > '9')
+			{
+				if(cadena[i] == '.')
+				{
+					contadorPuntos++;
 
-	        	if(contadorPuntos > 1)
-	        	{
-	                retorno = 0;
-	                break;
-	        	}
-        	}
-            else
-            {
-				retorno = 0;
-				break;
-            }
-        }
+					if(contadorPuntos > 1)
+					{
+						retorno = 0;
+						break;
+					}
+				}
+				else
+				{
+					retorno = 0;
+					break;
+				}
+			}
+		}
     }
 
     return retorno;
@@ -250,7 +256,7 @@ int validarLetras(char* cadena, int len)
 	int retorno = 0;
 	int i;
 
-	if(cadena != NULL)
+	if(cadena != NULL && len > 0)
 	{
 		for(i=0 ; i<len ; i++)
 		{
@@ -298,9 +304,12 @@ void convertirStringMinuscula(char* string)
 {
 	int i;
 
-	for(i=0 ; i<strlen(string) ; i++)
+	if(string != NULL)
 	{
-		string[i] = tolower(string[i]);
+		for(i=0 ; i<strlen(string) ; i++)
+		{
+			string[i] = tolower(string[i]);
+		}
 	}
 }
 
