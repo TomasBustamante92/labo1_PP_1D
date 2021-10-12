@@ -108,10 +108,12 @@ int main(void) {
 
 				if(promedioDeEdadPerritos != -1)
 				{
+					limpiarPantalla();
 					printf("\nPromedio de edad de perros: %d \n", promedioDeEdadPerritos);
 				}
 				else
 				{
+					limpiarPantalla();
 					printf("No hay perros en la base de datos \n");
 				}
 

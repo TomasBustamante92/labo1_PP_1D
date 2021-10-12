@@ -14,6 +14,8 @@ int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, 
 	char nombrePerro[NOMBRE_PERRO];
 	int indicePerros;
 
+		limpiarPantalla();
+
 		estadiaAux.id = id +1;
 
 		if(input_requestStringOnlyLetters(estadiaAux.nombreDuenio, "Nombre del dueño: ", "ERROR. Nombre del dueño: ", 21) == -1)
@@ -43,7 +45,6 @@ int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, 
 
 			if(estadiaAux.idPerro == -1)
 			{
-				limpiarPantalla();
 				printf("Perro no encontrado, ingrese otro \n\n");
 			}
 
@@ -51,6 +52,7 @@ int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, 
 
 		indicePerros = encontrarPerroId(perros, perrosLen, estadiaAux.idPerro);
 
+		limpiarPantalla();
 		imprimirEstadiaMenu();
 		imprimirEstadia(estadiaAux, perros, indicePerros);
 		if(confirmacion("Confirmar reserva [si]: ", "Confirmar reserva [si]: ") == 0)
@@ -92,6 +94,8 @@ int imprimirEstadias(EstadiaDiaria* lista, int estadiaLen, Perro* perros,int per
 				printf("No se encontro ningun perro \n");
 			}
 			retorno = 0;
+
+			break;
 		}
 	}
 	return retorno;
@@ -140,6 +144,7 @@ int encontrarPerroId(Perro* perros, int perrosLen, int reservaId)
 		if(perros[i].id == reservaId)
 		{
 			retorno = i;
+			break;
 		}
 	}
 

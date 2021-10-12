@@ -52,6 +52,7 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro)
 		if(strcmp(perro1, perro2) == 0)
 		{
 			retorno = perros[i].id;
+			break;
 		}
 	}
 
