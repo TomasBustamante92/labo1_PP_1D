@@ -169,6 +169,7 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen)
 					}
 				}
 			}
+
 			nuevaEstadiaLen--;
 		} while(flagSwap == -1);
 	}

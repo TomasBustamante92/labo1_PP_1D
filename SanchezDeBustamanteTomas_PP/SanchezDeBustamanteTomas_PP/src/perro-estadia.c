@@ -98,7 +98,6 @@ int imprimirEstadias(EstadiaDiaria* lista, int estadiaLen, Perro* perros,int per
 				}
 				retorno = 0;
 
-				break;
 			}
 		}
 	}
