@@ -21,14 +21,35 @@ int main(void) {
 
 	int opcion;
 	int idEstadia = 100000;
+	int idDuenio = 30004; // arranca en el 30004 por los datos hardcodeados
+
 	float promedioDeEdadPerritos;
 
-	Perro perros[PERROS_LEN] = { 	{7000, "Lobo", "Sharpei", 2, OCUPADO},
-									{7001, "Sheila", "Golden", 12, OCUPADO},
-									{7002, "Reina", "Galgo", 13, OCUPADO},
+	Perro perros[PERROS_LEN] = { 	{7000, "Lobo", "Sharpei", 2, 0, OCUPADO},
+									{7001, "Sheila", "Golden", 12, 0, OCUPADO},
+									{7002, "Reina", "Galgo", 13, 0, OCUPADO},
 	};
 
 	EstadiaDiaria estadias[100];
+
+	sDuenio duenios[DUENIOS_LEN];
+
+	inicializarDuenioIsEmpty(duenios, DUENIOS_LEN);
+
+	// Duenios hardcodeados
+	sDuenio dueniosAux[5]  = { 	{30000, "Juan Carlos", 1152458753, OCUPADO},
+								{30001, "Lucia", 1124222012, OCUPADO},
+								{30002, "Hernan", 1169858740, OCUPADO},
+								{30003, "Marcelo", 1124222012, OCUPADO},
+								{30004, "Nicolas", 1169858740, OCUPADO},
+	};
+
+	duenios[0] = dueniosAux[0];
+	duenios[1] = dueniosAux[1];
+	duenios[2] = dueniosAux[2];
+	duenios[3] = dueniosAux[3];
+	duenios[4] = dueniosAux[4];
+
 
 	inicializarEstadiaIsEmpty(estadias, 100);
 
@@ -39,7 +60,9 @@ int main(void) {
 									"4. Listar estadias \n"
 									"5. Listar perros \n"
 									"6. Promedio de edad de los perros \n"
-									"7. Salir\n"
+									"7. Perro con mas estadias \n"
+									"8. Listado de perros con sus estadias \n"
+									"9. Salir\n"
 									"Ingrese una opcion: ",
 									"\n1. Reservar estadia \n"
 									"2. Modificar estadia \n"
@@ -47,8 +70,10 @@ int main(void) {
 									"4. Listar estadias \n"
 									"5. Listar perros \n"
 									"6. Promedio de edad de los perros \n"
-									"7. Salir\n"
-									"ERROR. Ingrese una opcion: ", 1, 7) == -1)
+									"7. Perro con mas estadias \n"
+									"8. Listado de perros con sus estadias \n"
+									"9. Salir\n"
+									"ERROR. Ingrese una opcion: ", 1, 8) == -1)
 		{
 			limpiarPantalla();
 			printf("ERROR FATAL! \n\n");
@@ -57,15 +82,16 @@ int main(void) {
 		switch(opcion)
 		{
 			case 1:
-				if(confirmarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
+				if(confirmarEstadia(estadias, ESTADIA_LEN, idEstadia, duenios , DUENIOS_LEN,perros, PERROS_LEN) == 0)
 				{
 					limpiarPantalla();
 					printf("Reserva exitosa \n\n");
+					idDuenio++;
 					idEstadia++;
 				}
 				break;
 			case 2:
-				if(modificarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
+				if(modificarEstadia(estadias, ESTADIA_LEN, idEstadia, duenios,DUENIOS_LEN, perros, PERROS_LEN) == 0)
 				{
 					limpiarPantalla();
 					printf("Reserva modificada \n\n");
@@ -77,7 +103,8 @@ int main(void) {
 				}
 				break;
 			case 3:
-				if(cancelarEstadia(estadias, ESTADIA_LEN, idEstadia, perros, PERROS_LEN) == 0)
+
+				if(cancelarEstadia(estadias, ESTADIA_LEN, idEstadia, duenios, DUENIOS_LEN, perros, PERROS_LEN) == 0)
 				{
 					limpiarPantalla();
 					printf("Reserva cancelada \n\n");
@@ -89,9 +116,9 @@ int main(void) {
 				}
 				break;
 			case 4:
-				ordenarEstadia(estadias, ESTADIA_LEN);
+				ordenarEstadia(estadias, ESTADIA_LEN, duenios, DUENIOS_LEN);
 
-				if(imprimirEstadias(estadias, ESTADIA_LEN, perros, PERROS_LEN) == -1)
+				if(imprimirEstadias(estadias, ESTADIA_LEN, duenios, DUENIOS_LEN, perros, PERROS_LEN) == -1)
 				{
 					printf("No hay reservas en la base de datos \n\n");
 				}
@@ -118,13 +145,22 @@ int main(void) {
 				}
 
 				break;
+
 			case 7:
+				perrosConMasEstadias(perros, PERROS_LEN);
+
+				break;
+
+			case 8:
+				mostrarPerrosConEstadias(perros, PERROS_LEN, estadias, ESTADIA_LEN, duenios, DUENIOS_LEN);
+				break;
+			case 9:
 				limpiarPantalla();
 				printf("Adios!\n");
 				break;
 		}
 
-	} while (opcion != 7);
+	} while (opcion != 9);
 
 	return EXIT_SUCCESS;
 }

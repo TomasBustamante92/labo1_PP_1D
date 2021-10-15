@@ -94,6 +94,39 @@ float promedioDeEdadDePerros(Perro* perros,int perrosLen)
 	return promedio;
 }
 
+int perrosConMasEstadias(Perro* perros,int perrosLen)
+{
+	int retorno = -1;
+	int i;
+	int flag = 0;
+	int perroMasEstadias;
+	char nombrePerroMasEstadias[41];
+
+	if(perros != NULL && perrosLen > 0)
+	{
+		for(i=0 ; i<perrosLen ; i++)
+		{
+			if(flag == 0 || perroMasEstadias < perros[i].contadorEstadias)
+			{
+				perroMasEstadias = perros[i].contadorEstadias;
+				strcpy(nombrePerroMasEstadias, perros[i].nombre);
+				flag = 1;
+
+			}
+		}
+	}
+
+	if(perroMasEstadias > 0)
+	{
+		printf("\nEl perro con mas estadias es: %s \n\n", nombrePerroMasEstadias);
+	}
+	else
+	{
+		printf("No hay reservas");
+	}
+	return retorno;
+}
+
 
 
 

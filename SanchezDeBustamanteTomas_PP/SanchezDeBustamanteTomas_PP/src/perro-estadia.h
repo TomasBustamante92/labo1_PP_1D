@@ -10,6 +10,7 @@
 
 #include "perro.h"
 #include "estadiaDiaria.h"
+#include "duenio.h"
 #include <string.h>
 
 /// @fn int reservarUnaEstadia(EstadiaDiaria*, int, int, int, Perro*, int)
@@ -22,7 +23,7 @@
 /// @param perros	array de perros
 /// @param perrosLen	longitud del array de perros
 /// @return en caso de que el usuario confirme devuelve [0] caso contrario devuelve [-1]
-int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, int id, Perro* perros, int perrosLen);
+int reservarUnaEstadia(EstadiaDiaria* listaEstadias, int estadiaLen, int indiceEstadia, int idEstadias, sDuenio* listaDuenios, int dueniosLen, Perro* perros, int perrosLen);
 
 /// @fn int confirmarEstadia(EstadiaDiaria*, int, int, Perro*, int)
 /// @brief llama a la funcion reservarUnaEstadia pidiendo confirmacion de la estadia, si esa funcioncion devuelve [0] se cambiara el parametro isEmpty a [OCUPADO]
@@ -33,7 +34,7 @@ int reservarUnaEstadia(EstadiaDiaria* lista, int estadiaLen, int indiceEstadia, 
 /// @param perros array de perros
 /// @param perrosLen longitud del array de perros
 /// @return en caso de que el usuario confirme devuelve [0] caso contrario devuelve [-1]
-int confirmarEstadia(EstadiaDiaria* lista, int estadiaLen, int id, Perro* perros, int perrosLen);
+int confirmarEstadia(EstadiaDiaria* lista, int estadiaLen, int idEstadia, sDuenio* listaDuenios, int dueniosLen, Perro* perros, int perrosLen);
 
 /// @fn void imprimirEstadia(EstadiaDiaria, Perro*, int)
 /// @brief imprime datos de una estadia
@@ -41,7 +42,7 @@ int confirmarEstadia(EstadiaDiaria* lista, int estadiaLen, int id, Perro* perros
 /// @param estadia una estadia
 /// @param perros array de perros
 /// @param indicePerros  longitud del array de perros
-void imprimirEstadia(EstadiaDiaria estadia, Perro* perros, int indicePerros);
+void imprimirEstadia(EstadiaDiaria estadia, Perro* perros, sDuenio duenio, int indicePerros);
 
 /// @fn void imprimirEstadiaMenu(void)
 /// @brief Imprime nombre de datos del menu que van arriba de los datos de las estadias y perros
@@ -56,7 +57,7 @@ void imprimirEstadiaMenu(void);
 /// @param perros array de perros
 /// @param perrosLen longitud del array de perros
 /// @return devuelve [0] en caso de que se pueda imprimir, caso contrario no hay ninguna estadia y devuelve [-1]
-int imprimirEstadias(EstadiaDiaria* lista, int estadiaLen, Perro* perros,int perrosLen);
+int imprimirEstadias(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int dueniosLen, Perro* perros,int perrosLen);
 
 /// @fn int encontrarPerroId(Perro*, int, int)
 /// @brief se le ingresa un ID y lo busca en el array de perros, caso de que lo encuentre devuelve el indice
@@ -76,7 +77,7 @@ int encontrarPerroId(Perro* perros, int perrosLen, int reservaId);
 /// @param perros array de perros
 /// @param perrosLen longitud de array de perros
 /// @return caso de confirmar cancelacion devuelve [0] caso contrario devuelve [-1]
-int cancelarEstadia (EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* perros,int perrosLen);
+int cancelarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, sDuenio* duenios, int dueniosLen, Perro* perros,int perrosLen);
 
 /// @fn int modificarEstadia(EstadiaDiaria*, int, int, Perro*, int)
 /// @brief el usuario puede modificar el telefono o el perro por medio de un sub-menu
@@ -87,7 +88,8 @@ int cancelarEstadia (EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* 
 /// @param perros array de perros
 /// @param perrosLen longitud de array de perros
 /// @return devuelve [0] en caso de que se realice alguna modificacion, caso contrario devuelve [-1]
-int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, Perro* perros,int perrosLen);
+int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, sDuenio* duenios, int dueniosLen, Perro* perros,int perrosLen);
 
+void mostrarPerrosConEstadias(Perro* perros, int perrosLen, EstadiaDiaria* estadia, int estadiasLen, sDuenio* duenios, int dueniosLen);
 
 #endif /* PERRO_ESTADIA_H_ */

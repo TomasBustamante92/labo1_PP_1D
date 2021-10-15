@@ -119,12 +119,15 @@ int encontrarIndiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id)
 
 }
 
-void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen)
+void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int dueniosLen)
 {
 	int i;
 	int flagSwap;
 	int nuevaEstadiaLen = estadiaLen -1;
 	EstadiaDiaria estadiaAux;
+	sDuenio duenioAux;
+	int duenioIndice1;
+	int duenioIndice2;
 
 	if(lista != NULL && estadiaLen > 0)
 	{
@@ -159,7 +162,11 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen)
 				}
 				else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia == lista[i+1].fecha.dia)
 				{
-					if(strcmp(lista[i].nombreDuenio, lista[i+1].nombreDuenio) > 0)
+					duenioIndice1 = encontrarDuenioId(duenios, dueniosLen, lista[i].idDuenio);
+					duenioIndice2 = encontrarDuenioId(duenios, dueniosLen, lista[i+1].idDuenio);
+
+
+					//if(strcmp(duenios[duenioIndice1].nombre, duenios[duenioIndice2].nombre > 0)
 					{
 						estadiaAux = lista[i];
 						lista[i] = lista[i+1];

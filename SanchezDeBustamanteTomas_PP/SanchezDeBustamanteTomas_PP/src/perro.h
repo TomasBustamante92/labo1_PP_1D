@@ -27,6 +27,7 @@ typedef struct{
 	char raza[NOMBRE_PERRO];
 	int edad;
 
+	int contadorEstadias;
 	int isEmpty;
 }Perro;
 
@@ -60,5 +61,8 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro);
 /// @param perrosLen longitud del array de perros
 /// @return devuelve el promedio de los perros, caso de que no haya ninguno devuelve [-1]
 float promedioDeEdadDePerros(Perro* perros,int perrosLen);
+
+int perrosConMasEstadias(Perro* perros,int perrosLen);
+
 
 #endif /* PERRO_H_ */

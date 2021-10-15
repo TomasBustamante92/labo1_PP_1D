@@ -10,9 +10,10 @@
 
 #include <stdio_ext.h>
 #include <stdlib.h>
+#include "duenio.h"
 #include "input.h"
 
-#define TAM_NOMBRE_DUENIO 21
+//#define TAM_NOMBRE_DUENIO 21
 #define VACIO 1
 #define OCUPADO 0
 #define ESTADIA_LEN 100
@@ -26,8 +27,7 @@ typedef struct{
 
 typedef struct{
 	int id;
-	char nombreDuenio[TAM_NOMBRE_DUENIO];
-	int telefonoContacto;
+	int idDuenio;
 	int idPerro;
 	sFecha fecha;
 	int isEmpty;
@@ -69,7 +69,7 @@ int encontrarIndiceEstadiaPorId(EstadiaDiaria* lista, int estadiaLen, int id);
 ///
 /// @param lista array de estadias
 /// @param estadiaLen longitud del array de estadias
-void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen);
+void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int dueniosLen);
 
 
 
