@@ -102,24 +102,3 @@ int encontrarDuenioId(sDuenio* lista, int len, int reservaId)
 	return retorno;
 }
 
-/*
-int encontrarLugarDuenio(sDuenio* lista, int duenioLen)
-{
-	int retorno = -1;
-	int i;
-
-	if(lista != NULL && duenioLen > 0)
-	{
-		for(i=0 ; i<duenioLen ; i++)
-		{
-			if(lista[i].isEmpty == VACIO)
-			{
-				retorno = i;
-				break;
-			}
-		}
-	}
-
-	return retorno;
-}
-*/

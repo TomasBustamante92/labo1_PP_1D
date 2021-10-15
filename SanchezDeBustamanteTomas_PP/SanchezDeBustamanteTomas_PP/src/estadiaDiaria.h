@@ -13,7 +13,6 @@
 #include "duenio.h"
 #include "input.h"
 
-//#define TAM_NOMBRE_DUENIO 21
 #define VACIO 1
 #define OCUPADO 0
 #define ESTADIA_LEN 100

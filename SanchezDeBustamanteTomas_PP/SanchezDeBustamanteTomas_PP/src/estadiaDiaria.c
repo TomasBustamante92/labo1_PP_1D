@@ -134,13 +134,21 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int 
 		do{
 			flagSwap = -1;
 
+
 			for(i=0 ; i<nuevaEstadiaLen ; i++)
 			{
+				duenioIndice1 = encontrarDuenioId(duenios, dueniosLen, lista[i].idDuenio);
+				duenioIndice2 = encontrarDuenioId(duenios, dueniosLen, lista[i+1].idDuenio);
+
 				if(lista[i].fecha.anio < lista[i+1].fecha.anio)
 				{
 					estadiaAux = lista[i];
 					lista[i] = lista[i+1];
 					lista[i+1] = estadiaAux;
+
+					duenioAux = duenios[duenioIndice1];
+					duenios[duenioIndice1] = duenios[duenioIndice2];
+					duenios[duenioIndice2] = duenioAux;
 
 					flagSwap = 0;
 				}
@@ -150,6 +158,10 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int 
 					lista[i] = lista[i+1];
 					lista[i+1] = estadiaAux;
 
+					duenioAux = duenios[duenioIndice1];
+					duenios[duenioIndice1] = duenios[duenioIndice2];
+					duenios[duenioIndice2] = duenioAux;
+
 					flagSwap = 0;
 				}
 				else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia < lista[i+1].fecha.dia)
@@ -158,19 +170,24 @@ void ordenarEstadia(EstadiaDiaria* lista, int estadiaLen, sDuenio* duenios, int 
 					lista[i] = lista[i+1];
 					lista[i+1] = estadiaAux;
 
+					duenioAux = duenios[duenioIndice1];
+					duenios[duenioIndice1] = duenios[duenioIndice2];
+					duenios[duenioIndice2] = duenioAux;
+
 					flagSwap = 0;
 				}
 				else if(lista[i].fecha.anio == lista[i+1].fecha.anio && lista[i].fecha.mes == lista[i+1].fecha.mes && lista[i].fecha.dia == lista[i+1].fecha.dia)
 				{
-					duenioIndice1 = encontrarDuenioId(duenios, dueniosLen, lista[i].idDuenio);
-					duenioIndice2 = encontrarDuenioId(duenios, dueniosLen, lista[i+1].idDuenio);
 
-
-					//if(strcmp(duenios[duenioIndice1].nombre, duenios[duenioIndice2].nombre > 0)
+					if(strcmp(duenios[duenioIndice1].nombre, duenios[duenioIndice2].nombre) > 0)
 					{
 						estadiaAux = lista[i];
 						lista[i] = lista[i+1];
 						lista[i+1] = estadiaAux;
+
+						duenioAux = duenios[duenioIndice1];
+						duenios[duenioIndice1] = duenios[duenioIndice2];
+						duenios[duenioIndice2] = duenioAux;
 
 						flagSwap = 0;
 					}

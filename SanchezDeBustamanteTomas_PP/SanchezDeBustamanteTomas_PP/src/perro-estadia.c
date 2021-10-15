@@ -11,7 +11,6 @@ int reservarUnaEstadia(EstadiaDiaria* listaEstadias, int estadiaLen, int indiceE
 {
 	int retorno = -1;
 	EstadiaDiaria estadiaAux;
-	//sDuenio duenioAux;
 	char nombrePerro[NOMBRE_PERRO];
 	char nombreDuenio[NOMBRE_DUENIO];
 	int indicePerros;
@@ -20,8 +19,7 @@ int reservarUnaEstadia(EstadiaDiaria* listaEstadias, int estadiaLen, int indiceE
 		limpiarPantalla();
 
 		estadiaAux.id = idEstadias +1;
-		//duenioAux.id = idDuenios +1;
-		//estadiaAux.idDuenio = duenioAux.id;
+
 
 		if(mostrarDuenios(listaDuenios, dueniosLen) == -1)
 		{

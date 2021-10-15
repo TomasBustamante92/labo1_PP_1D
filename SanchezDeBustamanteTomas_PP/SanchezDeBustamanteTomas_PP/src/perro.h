@@ -62,6 +62,12 @@ int compararPerroNombre(Perro* perros, int len,char* nombrePerro);
 /// @return devuelve el promedio de los perros, caso de que no haya ninguno devuelve [-1]
 float promedioDeEdadDePerros(Perro* perros,int perrosLen);
 
+/// @fn int perrosConMasEstadias(Perro*, int)
+/// @brief Imprime el valor de perros con mas estadias
+///
+/// @param perros array de perros
+/// @param perrosLen longitud del array de perros
+/// @return si hay perros para imprimir devuelve [0], caso contrario devuelve [-1]
 int perrosConMasEstadias(Perro* perros,int perrosLen);
 
 

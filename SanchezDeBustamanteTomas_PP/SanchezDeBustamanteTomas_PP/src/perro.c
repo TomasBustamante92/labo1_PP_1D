@@ -119,11 +119,9 @@ int perrosConMasEstadias(Perro* perros,int perrosLen)
 	if(perroMasEstadias > 0)
 	{
 		printf("\nEl perro con mas estadias es: %s \n\n", nombrePerroMasEstadias);
+		retorno = 0;
 	}
-	else
-	{
-		printf("No hay reservas");
-	}
+
 	return retorno;
 }
 

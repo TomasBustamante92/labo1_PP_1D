@@ -37,7 +37,7 @@ int main(void) {
 	inicializarDuenioIsEmpty(duenios, DUENIOS_LEN);
 
 	// Duenios hardcodeados
-	sDuenio dueniosAux[5]  = { 	{30000, "Juan Carlos", 1152458753, OCUPADO},
+	sDuenio dueniosAux[5]  = { 	{30000, "Juan", 1152458753, OCUPADO},
 								{30001, "Lucia", 1124222012, OCUPADO},
 								{30002, "Hernan", 1169858740, OCUPADO},
 								{30003, "Marcelo", 1124222012, OCUPADO},
@@ -73,7 +73,7 @@ int main(void) {
 									"7. Perro con mas estadias \n"
 									"8. Listado de perros con sus estadias \n"
 									"9. Salir\n"
-									"ERROR. Ingrese una opcion: ", 1, 8) == -1)
+									"ERROR. Ingrese una opcion: ", 1, 9) == -1)
 		{
 			limpiarPantalla();
 			printf("ERROR FATAL! \n\n");
@@ -147,11 +147,16 @@ int main(void) {
 				break;
 
 			case 7:
-				perrosConMasEstadias(perros, PERROS_LEN);
+				limpiarPantalla();
+				if(perrosConMasEstadias(perros, PERROS_LEN) == -1)
+				{
+					printf("No hay reservas");
+				}
 
 				break;
 
 			case 8:
+				limpiarPantalla();
 				mostrarPerrosConEstadias(perros, PERROS_LEN, estadias, ESTADIA_LEN, duenios, DUENIOS_LEN);
 				break;
 			case 9:

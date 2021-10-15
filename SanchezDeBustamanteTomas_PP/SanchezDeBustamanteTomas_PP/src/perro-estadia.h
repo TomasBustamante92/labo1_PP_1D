@@ -90,6 +90,15 @@ int cancelarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, sDuenio*
 /// @return devuelve [0] en caso de que se realice alguna modificacion, caso contrario devuelve [-1]
 int modificarEstadia(EstadiaDiaria* lista, int estadiaLen, int ultimoId, sDuenio* duenios, int dueniosLen, Perro* perros,int perrosLen);
 
+/// @fn void mostrarPerrosConEstadias(Perro*, int, EstadiaDiaria*, int, sDuenio*, int)
+/// @brief Imprime listado de perros con sus estadias
+///
+/// @param perros	array de perros
+/// @param perrosLen	longitud del array de perros
+/// @param estadia array de estadias
+/// @param estadiasLen longitud del array de estadias
+/// @param duenios	array de duenios
+/// @param dueniosLen longitud del array de duenios
 void mostrarPerrosConEstadias(Perro* perros, int perrosLen, EstadiaDiaria* estadia, int estadiasLen, sDuenio* duenios, int dueniosLen);
 
 #endif /* PERRO_ESTADIA_H_ */
